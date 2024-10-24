@@ -44,7 +44,7 @@ def visualize_laser_distances(laser_distances, max_y):
     plt.tight_layout()
     plt.show()
 
-def visualize_second_most_recent_simulation(filename):
+def visualize_second_most_recent_simulation(filename, aye):
     try:
         with h5py.File(filename, 'r') as f:
             # Get all simulation keys and sort them
@@ -55,7 +55,7 @@ def visualize_second_most_recent_simulation(filename):
                 return
 
             # Select the second-most recent simulation
-            second_most_recent = sim_keys[-2]  # Changed to -2 to get the second-most recent
+            second_most_recent = sim_keys[-aye]  # Changed to -2 to get the second-most recent
             sim_data = f[second_most_recent]
 
             # Extract data
@@ -112,11 +112,11 @@ def count_simulations(filename):
 
 # Example usage
 if __name__ == "__main__":
-    filename = "simulation_data_parallel.h5"
+    filename = "simulation_data/simulation_data_parallel.h5"
     num_sims = count_simulations(filename)
     print(f"Total number of simulations: {num_sims}")
 
     if num_sims >= 2:
-        visualize_second_most_recent_simulation(filename)
+        visualize_second_most_recent_simulation(filename, 1)
     else:
         print("Not enough simulations to visualize the second-most recent.")
