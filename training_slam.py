@@ -42,8 +42,10 @@ def load_and_preprocess_data(filename, num_simulations):
     print(f"y_mask shape: {y_mask.shape}")
     return X, y_dist, y_mask
 
+
 def scale_microphone(data, min_val=-200, max_val=200):
     return (data - min_val) / (max_val - min_val) * 2 - 1
+
 
 def scale_laser(data, min_val=0, max_val=0.1):
     return np.where(data != 0, (data - min_val) / (max_val - min_val), 0)

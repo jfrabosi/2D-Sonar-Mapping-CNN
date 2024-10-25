@@ -1,8 +1,7 @@
 import numpy as np
 import random
-import json
 import h5py
-from numba import cuda, float32
+from numba import cuda
 import math
 import pygame
 import matplotlib.pyplot as plt
